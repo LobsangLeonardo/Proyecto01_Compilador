@@ -1,0 +1,14 @@
+C:\Users\Logan\Desktop\Practica01\LexerApp\bin\HPD\Debug\net8.0\LexerApp.exe
+C:\Users\Logan\Desktop\Practica01\LexerApp\bin\HPD\Debug\net8.0\LexerApp.deps.json
+C:\Users\Logan\Desktop\Practica01\LexerApp\bin\HPD\Debug\net8.0\LexerApp.runtimeconfig.json
+C:\Users\Logan\Desktop\Practica01\LexerApp\bin\HPD\Debug\net8.0\LexerApp.dll
+C:\Users\Logan\Desktop\Practica01\LexerApp\bin\HPD\Debug\net8.0\LexerApp.pdb
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.AssemblyInfoInputs.cache
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.AssemblyInfo.cs
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.csproj.CoreCompileInputs.cache
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.dll
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\refint\LexerApp.dll
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.pdb
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\LexerApp.genruntimeconfig.cache
+C:\Users\Logan\Desktop\Practica01\LexerApp\obj\HPD\Debug\net8.0\ref\LexerApp.dll

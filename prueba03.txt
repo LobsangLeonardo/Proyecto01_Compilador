@@ -1,0 +1,27 @@
+// Comentario de una línea
+
+/* Comentario de múltiples líneas */
+
+if (x == 10) {
+    y = x + 5;
+    nombre = "John Doe";
+    return y;
+} else {
+    while (contador < 100) {
+        contador = contador + 1;
+        
+        
+    }
+}
+
+a = 123;
+b = 3.14159;
+c = -42;
+d = .5;
+e = 9.0;
+f = 9999999999999999999999999999;
+
+caracterInvalido = @;
+cadenaSinCerrar = "Hola mundo
+
+

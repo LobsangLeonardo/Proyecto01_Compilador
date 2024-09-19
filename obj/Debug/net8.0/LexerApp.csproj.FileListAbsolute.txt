@@ -1,0 +1,14 @@
+C:\Users\Usuario01\Documents\LexerApp\bin\Debug\net8.0\LexerApp.exe
+C:\Users\Usuario01\Documents\LexerApp\bin\Debug\net8.0\LexerApp.deps.json
+C:\Users\Usuario01\Documents\LexerApp\bin\Debug\net8.0\LexerApp.runtimeconfig.json
+C:\Users\Usuario01\Documents\LexerApp\bin\Debug\net8.0\LexerApp.dll
+C:\Users\Usuario01\Documents\LexerApp\bin\Debug\net8.0\LexerApp.pdb
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.AssemblyInfoInputs.cache
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.AssemblyInfo.cs
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.csproj.CoreCompileInputs.cache
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.dll
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\refint\LexerApp.dll
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.pdb
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\LexerApp.genruntimeconfig.cache
+C:\Users\Usuario01\Documents\LexerApp\obj\Debug\net8.0\ref\LexerApp.dll
