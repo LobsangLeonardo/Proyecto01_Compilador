@@ -4,9 +4,9 @@ using System.IO;
 using System.Text;
 
 //---------------------------Ideas para agregar -----------------------------------------
-// Ejecucion en una tabla, si es reservada o no
-// Poner la selecion del archivo en la ejecucion en consola
-// Si la palabra es reservada
+// Ejecucion en una tabla, si es reservada o no ----LISTO
+// Poner la selecion del archivo en la ejecucion en consola ----LISTO
+// Si la palabra es reservada ----LISTO
 // Ignorar loa comentarios
 // Numero de linea
 // PONER COMENTARIOS 
