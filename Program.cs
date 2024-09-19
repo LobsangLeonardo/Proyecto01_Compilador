@@ -229,15 +229,37 @@ class Programa_Impri
 {
     static void Main(string[] args)
     {
-        string rutaArchivo = "prueba03.txt"; //AQUI CAMBIO DE TEXTO DE PRUEBA
+        Console.WriteLine("Coloque el nombre del archivo con su tipo:");
+        string rutaArchivo = Console.ReadLine();
+
+        if (!File.Exists(rutaArchivo))
+        {
+            Console.WriteLine("Error, no se encuentra un archivo con ese nombre.");
+            return;
+        }
+
         string codigoFuente = File.ReadAllText(rutaArchivo);
 
         AnalizadorLexico analizador = new AnalizadorLexico(codigoFuente);
         List<Token> tokens = analizador.Analizar();
 
+        
+        const int tipoWidth = 15;
+        const int valorWidth = 60;
+        const int reservadaWidth = 10;
+
+        
+        Console.WriteLine(new string('-', tipoWidth + valorWidth + reservadaWidth + 4));
+        Console.WriteLine($"|{"Tipo",-tipoWidth}|{"Valor",-valorWidth}|{"Reservada",-reservadaWidth}|");
+        Console.WriteLine(new string('-', tipoWidth + valorWidth + reservadaWidth + 4));
+
+
         foreach (var token in tokens)
         {
-            Console.WriteLine(token);
+            string reservada = token.Tipo == TipoToken.PalabraClave ? "Sí" : "No";
+            Console.WriteLine($"|{token.Tipo,-tipoWidth}|{token.Valor,-valorWidth}|{reservada,-reservadaWidth}|");
         }
+
+        Console.WriteLine(new string('-', tipoWidth + valorWidth + reservadaWidth + 4));
     }
 }
