@@ -83,40 +83,61 @@ private NodoAST AnalizarIf()
     NodoAST nodoIf = new NodoAST("if");
     Avanzar(); // Consumir 'if'
     
-    EsperarToken(TipoToken.Delimitador, "("); // Esperar '('
-    nodoIf.AgregarHijo(AnalizarExpresion()); // Condición del if
-    EsperarToken(TipoToken.Delimitador, ")"); // Esperar ')'
-    nodoIf.AgregarHijo(AnalizarBloque()); // Bloque del if
+    EsperarToken(TipoToken.Delimitador, "("); 
+    nodoIf.AgregarHijo(AnalizarExpresion()); 
+    EsperarToken(TipoToken.Delimitador, ")");
+    nodoIf.AgregarHijo(AnalizarBloque()); 
 
     // Verificar si hay un 'else' inmediatamente después del bloque del if
     if (!FinDeTokens() && ObtenerTokenActual().Valor.ToLower() == "else")
     {
-        Avanzar(); // Consumir 'else'
+        Avanzar(); 
         
         // Crear un nodo 'else' y agregarle el bloque como hijo
         NodoAST nodoElse = new NodoAST("else");
-        nodoElse.AgregarHijo(AnalizarBloque()); // Bloque del else
+        nodoElse.AgregarHijo(AnalizarBloque()); 
         
-        nodoIf.AgregarHijo(nodoElse); // Agregar el nodo 'else' al nodo 'if'
+        nodoIf.AgregarHijo(nodoElse);
     }
 
     return nodoIf;
 }
 
     // Analiza una declaración while.
-   // Analiza una declaración while, manejando correctamente las declaraciones anidadas.
 private NodoAST AnalizarWhile()
 {
     NodoAST nodoWhile = new NodoAST("while");
     Avanzar(); // Consumir 'while'
 
-    EsperarToken(TipoToken.Delimitador, "("); // Esperar '('
-    nodoWhile.AgregarHijo(AnalizarExpresion()); // Analizar la condición
-    EsperarToken(TipoToken.Delimitador, ")"); // Esperar ')'
+    EsperarToken(TipoToken.Delimitador, "("); 
+    nodoWhile.AgregarHijo(AnalizarExpresion()); 
+    EsperarToken(TipoToken.Delimitador, ")"); 
 
-    nodoWhile.AgregarHijo(AnalizarBloque()); // Analizar el bloque del while
+    nodoWhile.AgregarHijo(AnalizarBloque()); 
 
     return nodoWhile;
+}
+
+
+    // Analiza una declaración for.
+private NodoAST AnalizarFor()
+{
+    NodoAST nodoFor = new NodoAST("for");
+    Avanzar(); // Consumir 'for'
+    EsperarToken(TipoToken.Delimitador, "("); 
+
+    nodoFor.AgregarHijo(AnalizarAsignacion());
+
+    EsperarToken(TipoToken.Delimitador, ";"); 
+    nodoFor.AgregarHijo(AnalizarExpresion());
+
+    EsperarToken(TipoToken.Delimitador, ";"); 
+    nodoFor.AgregarHijo(AnalizarAsignacion());
+
+    EsperarToken(TipoToken.Delimitador, ")"); 
+    nodoFor.AgregarHijo(AnalizarBloque());
+
+    return nodoFor;
 }
 
     // Analiza una asignación.
@@ -154,14 +175,14 @@ private NodoAST AnalizarWhile()
 private NodoAST AnalizarBloque()
 {
     NodoAST nodoBloque = new NodoAST(""); // Nodo sin etiqueta
-    EsperarToken(TipoToken.Delimitador, "{"); // Esperar '{'
+    EsperarToken(TipoToken.Delimitador, "{"); 
 
     while (!FinDeTokens() && ObtenerTokenActual().Valor != "}")
     {
-        nodoBloque.AgregarHijo(AnalizarDeclaracion()); // Añadir declaraciones como hijos
+        nodoBloque.AgregarHijo(AnalizarDeclaracion()); 
     }
 
-    EsperarToken(TipoToken.Delimitador, "}"); // Esperar '}'
+    EsperarToken(TipoToken.Delimitador, "}"); 
     return nodoBloque;
 }
 
