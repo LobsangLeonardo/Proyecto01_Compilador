@@ -1,6 +1,6 @@
 //Programa donde se ejecuta.
 //---------------------------Ideas para agregar -----------------------------------------//
-// El for y mas cosas que faltan ja
+
 // Todos los  diferentes tipos de tokens
 public enum TipoToken
 {
@@ -87,10 +87,11 @@ class Programa
         //El menu para seleccionar  el cual ejecurarse
         Console.WriteLine("\nSeleccione una opción:");
         Console.WriteLine("1 - Mostrar la Tabla Léxica");
-        Console.WriteLine("2 - Mostrar el Árbol Sintáctico Abstracto");
+        Console.WriteLine("2 - Mostrar el Árbol Sintáctico");
+        Console.WriteLine("3 - Mostrar el Árbol Sintáctico Abstracto");
         string? opcion = Console.ReadLine();
 
-        switch (opcion)
+    switch (opcion)
         {
             case "1":
                 MostrarTablaLexica(tokens);
@@ -99,8 +100,15 @@ class Programa
             case "2":
                 AnalizadorSintactico analizadorSintactico = new AnalizadorSintactico(tokens);
                 NodoAST arbolSintactico = analizadorSintactico.Analizar();
-                Console.WriteLine("\nÁrbol Sintáctico abstracto:");
+                Console.WriteLine("\nÁrbol Sintáctico:");
                 arbolSintactico.Imprimir();
+                break;
+
+            case "3":
+                AnalizadorSintacticoAbs analizadorAST = new AnalizadorSintacticoAbs(tokens);
+                NodoAST arbolAbstracto = analizadorAST.Analizar();
+                Console.WriteLine("\nÁrbol Sintáctico Abstracto (AST):");
+                arbolAbstracto.Imprimir();
                 break;
 
             default:
