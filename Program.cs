@@ -88,7 +88,9 @@ class Programa
         Console.WriteLine("\nSeleccione una opción:");
         Console.WriteLine("1 - Mostrar la Tabla Léxica");
         Console.WriteLine("2 - Mostrar el Árbol Sintáctico");
-        Console.WriteLine("3 - Mostrar el Árbol Sintáctico Abstracto");
+        //Console.WriteLine("3 - Mostrar el Árbol Sintáctico Abstracto");
+        Console.WriteLine("3 - Generar Código Intermedio");
+        Console.WriteLine("4 - Generar Tabla de cuadruplos");
         string? opcion = Console.ReadLine();
 
     switch (opcion)
@@ -103,12 +105,27 @@ class Programa
                 Console.WriteLine("\nÁrbol Sintáctico:");
                 arbolSintactico.Imprimir();
                 break;
-
+        
             case "3":
-                AnalizadorSintacticoAbs analizadorAST = new AnalizadorSintacticoAbs(tokens);
-                NodoAST arbolAbstracto = analizadorAST.Analizar();
-                Console.WriteLine("\nÁrbol Sintáctico Abstracto (AST):");
-                arbolAbstracto.Imprimir();
+                AnalizadorSintactico analizadorSintacticoCI = new AnalizadorSintactico(tokens);
+                NodoAST arbolSintacticoCI = analizadorSintacticoCI.Analizar();
+                GeneradorCodigoIntermedio generadorCI = new GeneradorCodigoIntermedio(arbolSintacticoCI);
+                List<string> codigoIntermedio = generadorCI.Generar();
+                Console.WriteLine("\nCódigo Intermedio:");
+                foreach (var linea in codigoIntermedio)
+                {
+                    Console.WriteLine(linea);
+                }
+                break;
+                
+            case "4":
+                AnalizadorSintactico analizadorSintacticoCuadruplos = new AnalizadorSintactico(tokens);
+                NodoAST arbolSintacticoCuadruplos = analizadorSintacticoCuadruplos.Analizar();
+                GeneradorCuadruplos generadorCuadruplos = new GeneradorCuadruplos();
+                List<Cuadruplo> cuadruplos = generadorCuadruplos.GenerarCuadruplos(arbolSintacticoCuadruplos);
+
+                Console.WriteLine("\nCuádruplos Generados:");
+                generadorCuadruplos.ImprimirCuadruplos();
                 break;
 
             default:
@@ -139,4 +156,18 @@ class Programa
         // Imprimir pie de la tabla
         Console.WriteLine(new string('-', tipoWidth + valorWidth + reservadaWidth + lineaWidth + 6));
     }
+    
+static void MostrarCodigoIntermedio(List<string> codigoIntermedio)
+    {
+        Console.WriteLine("\nCódigo Intermedio:");
+        Console.WriteLine(new string('-', 50));
+        
+        for (int i = 0; i < codigoIntermedio.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}: {codigoIntermedio[i]}");
+        }
+        
+        Console.WriteLine(new string('-', 50));
+    }
+    
 }
