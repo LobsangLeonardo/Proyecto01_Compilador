@@ -1,6 +1,4 @@
-//Programa donde se ejecuta.
-//---------------------------Ideas para agregar -----------------------------------------//
-
+//-------------------Main principal-------------------
 // Todos los  diferentes tipos de tokens
 public enum TipoToken
 {
@@ -88,36 +86,35 @@ class Programa
         Console.WriteLine("\nSeleccione una opción:");
         Console.WriteLine("1 - Mostrar la Tabla Léxica");
         Console.WriteLine("2 - Mostrar el Árbol Sintáctico");
-        //Console.WriteLine("3 - Mostrar el Árbol Sintáctico Abstracto");
+        //Console.WriteLine("3 - Mostrar el Árbol Sintáctico Abstracto"); <--- para usar otro codigo del arbol
         Console.WriteLine("3 - Generar Código Intermedio");
         Console.WriteLine("4 - Generar Tabla de cuadruplos");
         string? opcion = Console.ReadLine();
 
     switch (opcion)
         {
+            // Ejecutar la tabla de tokens
             case "1":
                 MostrarTablaLexica(tokens);
                 break;
-
+            // Mostrar el arbol sintactico
             case "2":
                 AnalizadorSintactico analizadorSintactico = new AnalizadorSintactico(tokens);
                 NodoAST arbolSintactico = analizadorSintactico.Analizar();
                 Console.WriteLine("\nÁrbol Sintáctico:");
                 arbolSintactico.Imprimir();
                 break;
-        
-            case "3":
-                AnalizadorSintactico analizadorSintacticoCI = new AnalizadorSintactico(tokens);
-                NodoAST arbolSintacticoCI = analizadorSintacticoCI.Analizar();
-                GeneradorCodigoIntermedio generadorCI = new GeneradorCodigoIntermedio(arbolSintacticoCI);
-                List<string> codigoIntermedio = generadorCI.Generar();
-                Console.WriteLine("\nCódigo Intermedio:");
-                foreach (var linea in codigoIntermedio)
-                {
-                    Console.WriteLine(linea);
-                }
+            // Ejecutar el codigo intermedio con triplos
+            case "3":   
+                AnalizadorSintactico analizadorTriplos = new AnalizadorSintactico(tokens);
+                NodoAST arbolTriplos = analizadorTriplos.Analizar();
+                GeneradorCodigoIntermedio generadorTriplos = new GeneradorCodigoIntermedio(tokens);
+                List<string> triplos = generadorTriplos.GenerarTriplos(arbolTriplos);
+
+                Console.WriteLine("\nTriplos Generados(Codigo intermedio):");
+                generadorTriplos.ImprimirTriplos();
                 break;
-                
+            // Ejecutar la tabla de cuadruplos
             case "4":
                 AnalizadorSintactico analizadorSintacticoCuadruplos = new AnalizadorSintactico(tokens);
                 NodoAST arbolSintacticoCuadruplos = analizadorSintacticoCuadruplos.Analizar();
@@ -127,7 +124,7 @@ class Programa
                 Console.WriteLine("\nCuádruplos Generados:");
                 generadorCuadruplos.ImprimirCuadruplos();
                 break;
-
+            // Por si si ponen una opcion erronea
             default:
                 Console.WriteLine("Opción no válida.");
                 break;
@@ -155,19 +152,6 @@ class Programa
         }
         // Imprimir pie de la tabla
         Console.WriteLine(new string('-', tipoWidth + valorWidth + reservadaWidth + lineaWidth + 6));
-    }
-    
-static void MostrarCodigoIntermedio(List<string> codigoIntermedio)
-    {
-        Console.WriteLine("\nCódigo Intermedio:");
-        Console.WriteLine(new string('-', 50));
-        
-        for (int i = 0; i < codigoIntermedio.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}: {codigoIntermedio[i]}");
-        }
-        
-        Console.WriteLine(new string('-', 50));
     }
     
 }
