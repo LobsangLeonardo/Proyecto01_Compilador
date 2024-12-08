@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
-using System.IO;
 
 public class GeneradorCuadruplos
 {
@@ -27,7 +24,7 @@ public class GeneradorCuadruplos
         if (nodo == null) return;
 
         string valorNodo = !string.IsNullOrEmpty(nodo.Valor) ? nodo.Valor.ToLower() : 
-                           !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo.ToLower() : "";
+                        !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo.ToLower() : "";
 
         switch (valorNodo)
         {
@@ -156,30 +153,30 @@ public class GeneradorCuadruplos
     {
         if (nodo == null) return "_";
 
-        // Si es un nodo hoja (constante o variable)
+        
         if (nodo.Hijos.Count == 0)
         {
-            // Prioriza el valor, luego el tipo
+            
             return !string.IsNullOrEmpty(nodo.Valor) ? nodo.Valor : 
-                   !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo : "_";
+                !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo : "_";
         }
 
-        // Para operaciones binarias (+, -, *, /, comparaciones)
+    
         if (nodo.Hijos.Count == 2)
         {
             string operando1 = ProcesarExpresion(nodo.Hijos[0]);
             string operando2 = ProcesarExpresion(nodo.Hijos[1]);
             string temporal = GenerarTemporal();
 
-            // Usar el valor de la operación del nodo actual
+            
             string operacion = !string.IsNullOrEmpty(nodo.Valor) ? nodo.Valor : 
-                               !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo : "+";
+                            !string.IsNullOrEmpty(nodo.Tipo) ? nodo.Tipo : "+";
 
             cuadruplos.Add(new Cuadruplo(operacion, operando1, operando2, temporal));
             return temporal;
         }
 
-        // Para operaciones unarias o expresiones con un solo hijo
+        
         if (nodo.Hijos.Count == 1)
         {
             return ProcesarExpresion(nodo.Hijos[0]);
@@ -199,16 +196,16 @@ public class GeneradorCuadruplos
     }
     public string GenerarTabla()
     {
-        // Definir el ancho de las columnas
+        
         int anchoNumero = 5;
         int anchoOperacion = 15;
         int anchoOperando = 15;
         int anchoResultado = 15;
 
-        // Crear un StringBuilder para construir la tabla
+        
         StringBuilder tabla = new StringBuilder();
 
-        // Encabezados
+        
         tabla.AppendLine(
             "+" + new string('-', anchoNumero) + 
             "+" + new string('-', anchoOperacion) + 
@@ -225,7 +222,7 @@ public class GeneradorCuadruplos
             "| " + "Resultado".PadRight(anchoResultado - 1) + "|"
         );
 
-        // Línea separadora
+        
         tabla.AppendLine(
             "+" + new string('-', anchoNumero) + 
             "+" + new string('-', anchoOperacion) + 
@@ -234,7 +231,7 @@ public class GeneradorCuadruplos
             "+" + new string('-', anchoResultado) + "+"
         );
 
-        // Agregar cada cuádruplo
+        
         for (int i = 0; i < cuadruplos.Count; i++)
         {
             tabla.AppendLine(
@@ -246,7 +243,7 @@ public class GeneradorCuadruplos
             );
         }
 
-        // Línea final
+        
         tabla.AppendLine(
             "+" + new string('-', anchoNumero) + 
             "+" + new string('-', anchoOperacion) + 
